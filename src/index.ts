@@ -1,4 +1,5 @@
 import { ApolloServer, gql } from 'apollo-server';
+import { Resolvers } from './generated/graphql';
 
 const typeDefs = gql`
   type Query {
@@ -6,7 +7,9 @@ const typeDefs = gql`
   }
 `;
 
-const resolvers = {
+// MEMO: リゾルバの型を指定。
+// 以下のように記述することで、スキーマとリゾルバの型が一致しない時はTSのコンパイルが通らなくなる
+const resolvers: Resolvers = {
   Query: {
     hello: () => 'world',
   },
